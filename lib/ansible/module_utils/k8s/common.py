@@ -164,7 +164,7 @@ class K8sAnsibleMixin(object):
             # We have enough in the parameters to authenticate, no need to load incluster or kubeconfig
             pass
         elif auth_set('kubeconfig') or auth_set('context'):
-            kubernetes.config.load_kube_config(auth.get('kubeconfig'), auth.get('context'))
+            kubernetes.config.load_kube_config(auth.get('kubeconfig'), auth.get('context'), persist_config=True)
         else:
             # First try to do incluster config, then kubeconfig
             try:
